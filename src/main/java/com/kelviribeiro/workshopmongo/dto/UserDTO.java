@@ -25,6 +25,14 @@ public class UserDTO implements Serializable {
 		this.email = obj.getEmail();
 	}
 	
+	public User returnEntity() {
+		User user= new User();
+		user.setId(id);		
+		user.setName(name);
+		user.setEmail(email);
+		return user;
+	}
+	
 	public static List<UserDTO> returnListPojo(List<User> list) {
 		List<UserDTO> listDto = new ArrayList<UserDTO>();
 		list.stream().forEach(x -> {
