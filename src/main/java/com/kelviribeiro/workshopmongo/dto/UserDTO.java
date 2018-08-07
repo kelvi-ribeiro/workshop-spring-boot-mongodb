@@ -3,6 +3,7 @@ package com.kelviribeiro.workshopmongo.dto;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.kelviribeiro.workshopmongo.domain.User;
 
@@ -29,6 +30,12 @@ public class UserDTO implements Serializable {
 		list.stream().forEach(x -> {
 			listDto.add(new UserDTO(x));
 		});
+		
+		return listDto;
+	}
+	
+	public static List<UserDTO> returnListPojoWithMap(List<User> list) {
+		List<UserDTO> listDto = list.stream().map(x -> new UserDTO(x)).collect(Collectors.toList());		
 		return listDto;
 	}
 
