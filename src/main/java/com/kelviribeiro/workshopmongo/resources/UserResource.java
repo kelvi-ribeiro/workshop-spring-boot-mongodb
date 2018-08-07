@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kelviribeiro.workshopmongo.domain.User;
+import com.kelviribeiro.workshopmongo.dto.UserDTO;
 import com.kelviribeiro.workshopmongo.service.UserService;
 
 @RestController
@@ -23,8 +23,8 @@ public class UserResource {
 	private UserService service;
 	
 	@RequestMapping(method=RequestMethod.GET)
- 	public ResponseEntity<List<User>> findAll() {
-		List<User> list = service.findAll();
+ 	public ResponseEntity<List<UserDTO>> findAll() {
+		List<UserDTO> list = UserDTO.returnListPojo(service.findAll());
 		return ResponseEntity.ok().body(list);
 	}
 }
